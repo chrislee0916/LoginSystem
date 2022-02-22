@@ -15,7 +15,8 @@ go run main.go
 
 ## API 介紹
 > 除了GET，DELETE方法之外其他都需要使用JSON檔案進行新增或更新的動作  
-> JSON檔案格式可以在controllers裡的 input struct裡看到  
+> JSON檔案格式可以在controllers裡的 input struct裡看到    
+
 ***User 基本路由***  
 
 ```
