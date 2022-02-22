@@ -12,11 +12,13 @@ import (
 
 var KEY = os.Getenv("KEY")
 
+//初始化一個基於redis的session store
 func EnableRedisSession() gin.HandlerFunc {
 	store, _ := redis.NewStore(10, "tcp", "localhost:6379", "", []byte(KEY))
 	return sessions.Sessions("SAMPLE", store)
 }
 
+//檢查http request裡的cookie有沒有sessionID
 func AuthSessionMiddle() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		session := sessions.Default(c)

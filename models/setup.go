@@ -29,6 +29,7 @@ func Setup() {
 		log.Fatal("gorm.Open error: ", err.Error())
 	}
 
+	//建立三個table
 	DB.AutoMigrate(&User{}, &Category{}, &Product{})
 
 	c1 := Category{CName: "food"}
@@ -36,6 +37,7 @@ func Setup() {
 	c3 := Category{CName: "furniture"}
 	categories := []Category{c1, c2, c3}
 
+	//在categories table裡增加分類的資料
 	DB.Create(&categories)
 
 }

@@ -51,6 +51,8 @@ func GetUserByID(uid uint) (User, error) {
 	return u, nil
 }
 
+//先判斷要註冊的user是否已存在
+//無，則存在DB
 func RegisterCheck(username, password string) (err error) {
 	u := &User{}
 	err = DB.Model(&User{}).Where("username = ?", username).First(&u).Error
@@ -69,6 +71,9 @@ func RegisterCheck(username, password string) (err error) {
 	return
 }
 
+//先判斷要登入的user是否有註冊
+//有，則進行password的比對
+//最後return userID
 func LoginCheck(username, password string) (id uint, err error) {
 	u := User{}
 
